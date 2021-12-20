@@ -1,7 +1,6 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# WebPack Template
-
+# JAVASCRIPT CAPSTONE
 
 
 ## Built With
@@ -22,9 +21,9 @@ To get a local copy up and running follow these simple example steps.
 
 To contribute with this project you must instal the follow items:
 
--NODE
--NPM
--SASS
+- NODE
+- NPM
+- SASS
 
 ### Setup
 
@@ -42,7 +41,9 @@ Install the packages globally and after that:
 
 ## Authors
 
+👤 **George Magdy**
 👤 **Will Teixeira**
+👤 **Yigit**
 
 - GitHub: [@githubhandle](https://github.com/iwillteixeira)
 - Twitter: [@twitterhandle](https://twitter.com/iwillteixeira)

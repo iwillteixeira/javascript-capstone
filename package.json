@@ -1,5 +1,5 @@
 {
-  "homepage": "",
+  "homepage": "https://github.com/iwillteixeira/javascript-capstone",
   "name": "webpack-template",
   "version": "1.0.0",
   "main": "index.js",
@@ -13,10 +13,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/iwillteixeira/leaderboard_proj"
+    "url": "https://github.com/iwillteixeira/javascript-capstone"
   },
   "keywords": [],
-  "author": "Will",
+  "author": "Will , Yigit , George",
   "license": "ISC",
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.14.5",
@@ -48,5 +48,5 @@
     "@jest/globals": "^27.0.6",
     "git-flow": "^0.2.0"
   },
-  "description": "Leaderboard project"
+  "description": "Javascript CAPSTONE"
 }
