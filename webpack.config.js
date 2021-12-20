@@ -35,6 +35,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
+      reservetion: './src/comments.html',
+      comments: './src/reservation.html',
     }),
   ],
 
