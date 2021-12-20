@@ -11,10 +11,38 @@
 </head>
 <body>
     <header>
-        <h1 class="text-primary">webpack template</h1>
+      
     </header>
     <main>
-       
+       <section class="modal-reservation d-flex flex-column justify-content-center align-items-center">
+           <div class="holder col-lg-8 d-flex flex-column align-items-center">
+               <div class="close align-self-end position-relative"><i class="fas fa-times fa-2x close-modal"></i></div>
+               <div class="image-reservation d-flex justify-content-center col-10 py-4"><img src="images/space1.jpg" class="img-fluid" alt=""></div>
+               <h2 class="p-3">Space 3</h2>
+               <div class="description justify-content-center col-10 col-lg-3">
+                   <ul class="row row-cols-2">
+                       <li>Fuel: titanium</li>
+                       <li>Length: 100,000</li>
+                       <li>Weight: 400</li>
+                       <li>Power: 100,000,000</li>
+                  </ul>
+               </div>
+               <div class="reservations">
+                   <h3 class="p-3">Reservations (2)</h3>
+                   <p>03/11/2021 - 03/12/2021 by Alex</p>
+                   <p>03/11/2021 - 03/12/2021 by Alex</p>
+               </div>
+               <form class="d-flex flex-column aligm-items-start col-10 col-lg-3">
+                   <h3 class="text-center">Add a reservation</h3>
+                   <input placeholder="Your name" type="text" name="your_name" id="your_name" required>
+                   <input placeholder="Start date" type="date" name="start" id="start" required>
+                   <input placeholder="End date" type="date" name="end" id="end" required>
+                   <button>Reserve</button>
+               </form>
+           </div>
+
+
+       </section>
     </main>
     <footer>
 
