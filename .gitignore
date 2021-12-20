@@ -1,0 +1,4 @@
+#git ignore
+node_modules/
+*.Identifier
+hint_report/
