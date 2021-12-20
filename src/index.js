@@ -1,9 +1,8 @@
-import "./scss/style.scss";
+import './scss/style.scss';
 
-import APIHelper from "./js/APIHelper";
+import APIHelper from './js/APIHelper';
 
-let createCardForFilm = (film) => {
-  return `
+const createCardForFilm = (film) => `
   <div class="card d-flex col-lg-3 col-md-5 col-10">
     <img src=${film.image.original} class="card-img-top w-100"
       alt="Show Image">
@@ -19,28 +18,27 @@ let createCardForFilm = (film) => {
 
     </div>
   </div>`;
-};
 
-let filmsDiv = document.querySelector(".films");
+const filmsDiv = document.querySelector('.films');
 APIHelper.getAll().then((data) => {
-  filmsDiv.innerHTML = " ";
+  filmsDiv.innerHTML = ' ';
   data.forEach((film) => {
     filmsDiv.innerHTML += createCardForFilm(film);
   });
 
-  let commentBtns = document.querySelectorAll(".comment");
+  const commentBtns = document.querySelectorAll('.comment');
   commentBtns.forEach((commentBtn) => {
-    commentBtn.addEventListener("click", (e) => {
-      let showId = e.target.dataset.id;
+    commentBtn.addEventListener('click', (e) => {
+      const showId = e.target.dataset.id;
       APIHelper.getDetails(showId).then((data) => {
         console.log(data);
       });
     });
   });
 
-  let reservationBtns = document.querySelectorAll(".reservation");
+  const reservationBtns = document.querySelectorAll('.reservation');
   reservationBtns.forEach((reservationBtn) => {
-    reservationBtn.addEventListener("click", (e) => {
+    reservationBtn.addEventListener('click', (e) => {
       APIHelper.getDetails(e.target.dataset.id).then((data) => {
         console.log(data);
       });
