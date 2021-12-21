@@ -32,7 +32,10 @@ APIHelper.getAll().then((data) => {
     commentBtn.addEventListener('click', (e) => {
       const showId = e.target.dataset.id;
       APIHelper.getDetails(showId).then((data) => {
-        Comment.showModal(showId, data);
+        Comment.showModal();
+        Comment.closeModal();
+        Comment.showImage(data.image.original);
+        Comment.showName(data.name);
         console.log(showId, data);
       });
     });

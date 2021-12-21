@@ -9,19 +9,22 @@ const Comment = (() => {
     });
   };
 
-  const showModal = (showID, data) => {
+  const showModal = () => {
     modal.classList.remove('d-none');
     modal.classList.add('d-block');
-    closeModal();
-    itemData(showID, data);
   };
 
-  const itemData = (showID, data) => {
-    const image = document.querySelector('canvas');
-    image.style.backgroundImage = `url(${data.image.original}`;
+  const showImage = (dataImage) => {
+    const image = document.querySelector('img');
+    image.src = dataImage;
     console.log();
   };
 
-  return { showModal, closeModal };
+  const showName = (dataName) => {
+    const title = document.querySelector('h2');
+    title.innerText = dataName;
+  };
+
+  return { showModal, closeModal, showImage, showName };
 })();
 export default Comment;
