@@ -3,6 +3,7 @@ import './scss/style.scss';
 import APIHelper from './js/APIHelper';
 import Comment from './comment.js';
 import InvolvementAPIHelper from './js/InvolvementAPIHelper';
+import Reservation from './js/reservation.js';
 
 const createCardForFilm = (film, numOfLikes) => `
   <div class="card d-flex col-lg-3 col-md-5 col-10">
@@ -49,7 +50,7 @@ const displayShows = async () => {
   reservationBtns.forEach((reservationBtn) => {
     reservationBtn.addEventListener('click', (e) => {
       APIHelper.getDetails(e.target.dataset.id).then((data) => {
-        console.log(data);
+        Reservation.modalShowInfo(data);
       });
     });
   });
