@@ -1,5 +1,5 @@
 import './scss/style.scss';
-import Comment from './comment';
+import Comment from './comment.js';
 
 const btnComment = document.querySelectorAll('#comments');
 

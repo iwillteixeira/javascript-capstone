@@ -1,12 +1,6 @@
 const Comment = (() => {
   const modal = document.querySelector('.modal');
 
-  const showModal = (e) => {
-    modal.classList.remove('d-none');
-    modal.classList.add('d-block');
-    closeModal();
-  };
-
   const closeModal = () => {
     const closeModal = document.getElementById('close-modal');
     closeModal.addEventListener('click', () => {
@@ -15,6 +9,11 @@ const Comment = (() => {
     });
   };
 
+  const showModal = () => {
+    modal.classList.remove('d-none');
+    modal.classList.add('d-block');
+    closeModal();
+  };
   return { showModal, closeModal };
 })();
 export default Comment;
