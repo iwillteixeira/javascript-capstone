@@ -2,8 +2,10 @@ import './scss/style.scss';
 
 import APIHelper from './js/APIHelper';
 import Comment from './comment.js';
+import InvolvementAPIHelper from './js/InvolvementAPIHelper';
+import Reservation from './js/reservation.js';
 
-const createCardForFilm = (film) => `
+const createCardForFilm = (film, numOfLikes) => `
   <div class="card d-flex col-lg-3 col-md-5 col-10">
     <img src=${film.image.original} class="card-img-top w-100"
       alt="Show Image">
@@ -12,6 +14,7 @@ const createCardForFilm = (film) => `
         <h5 class="card-title mt-2 h6">${film.name}</h5>
         <i class="far fa-heart text-danger"></i>
       </div>
+      <div class="text-end">${numOfLikes}</div>
       <div class="d-flex flex-column gap-2 pt-2">
         <a class="btn btn-primary comment" data-id=${film.id}>Comments</a>
         <a class="btn btn-info reservation" data-id=${film.id}>Reservations</a>
@@ -20,11 +23,18 @@ const createCardForFilm = (film) => `
     </div>
   </div>`;
 
-const filmsDiv = document.querySelector('.films');
-APIHelper.getAll().then((data) => {
-  filmsDiv.innerHTML = ' ';
-  data.forEach((film) => {
-    filmsDiv.innerHTML += createCardForFilm(film);
+
+const displayShows = async () => {
+  const showsDiv = document.querySelector('.films');
+
+  const shows = await APIHelper.getAll();
+
+  showsDiv.innerHTML = '';
+  const likes = await InvolvementAPIHelper.getLikes();
+
+  shows.forEach((show) => {
+    const numOfLikes = likes.filter((like) => like.item_id === show.id)[0]?.likes || 0;
+    showsDiv.innerHTML += createCardForFilm(show, numOfLikes);
   });
 
   const commentBtns = document.querySelectorAll('.comment');
@@ -49,7 +59,20 @@ APIHelper.getAll().then((data) => {
   const reservationBtns = document.querySelectorAll('.reservation');
   reservationBtns.forEach((reservationBtn) => {
     reservationBtn.addEventListener('click', (e) => {
-      APIHelper.getDetails(e.target.dataset.id).then((data) => {});
+
+      APIHelper.getDetails(e.target.dataset.id).then((data) => {
+        Reservation.modalShowInfo(data);
+      });
     });
+  });
+};
+
+displayShows();
+
+const btnComment = document.querySelectorAll('#comments');
+
+btnComment.forEach((btn) => {
+  btn.addEventListener('click', (e) => {
+    Comment.showModal(e);
   });
 });
