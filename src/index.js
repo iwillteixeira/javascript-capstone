@@ -23,7 +23,6 @@ const createCardForFilm = (film, numOfLikes) => `
     </div>
   </div>`;
 
-
 const displayShows = async () => {
   const showsDiv = document.querySelector('.films');
 
