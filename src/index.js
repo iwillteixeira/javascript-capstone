@@ -1,11 +1,10 @@
-import "./scss/style.scss";
+import './scss/style.scss';
 
-import APIHelper from "./js/APIHelper";
-import Comment from "./comment.js";
-import InvolvementAPIHelper from "./js/InvolvementAPIHelper";
+import APIHelper from './js/APIHelper';
+import Comment from './comment.js';
+import InvolvementAPIHelper from './js/InvolvementAPIHelper';
 
-const createCardForFilm = (film, numOfLikes) =>
-  `
+const createCardForFilm = (film, numOfLikes) => `
   <div class="card d-flex col-lg-3 col-md-5 col-10">
     <img src=${film.image.original} class="card-img-top w-100"
       alt="Show Image">
@@ -23,21 +22,20 @@ const createCardForFilm = (film, numOfLikes) =>
     </div>
   </div>`;
 
-const filmsDiv = document.querySelector(".films");
+const filmsDiv = document.querySelector('.films');
 APIHelper.getAll().then((films) => {
-  filmsDiv.innerHTML = " ";
+  filmsDiv.innerHTML = ' ';
   InvolvementAPIHelper.getLikes().then((likes) => {
     films.forEach((film) => {
-      let numOfLikes =
-        likes.filter((like) => like.item_id === film.id)[0]?.likes || 0;
+      const numOfLikes = likes.filter((like) => like.item_id === film.id)[0]?.likes || 0;
       filmsDiv.innerHTML += createCardForFilm(film, numOfLikes);
     });
     // InvolvementAPIHelper.postLikes(film.id);
   });
 
-  const commentBtns = document.querySelectorAll(".comment");
+  const commentBtns = document.querySelectorAll('.comment');
   commentBtns.forEach((commentBtn) => {
-    commentBtn.addEventListener("click", (e) => {
+    commentBtn.addEventListener('click', (e) => {
       const showId = e.target.dataset.id;
       APIHelper.getDetails(showId).then((data) => {
         console.log(data);
@@ -45,9 +43,9 @@ APIHelper.getAll().then((films) => {
     });
   });
 
-  const reservationBtns = document.querySelectorAll(".reservation");
+  const reservationBtns = document.querySelectorAll('.reservation');
   reservationBtns.forEach((reservationBtn) => {
-    reservationBtn.addEventListener("click", (e) => {
+    reservationBtn.addEventListener('click', (e) => {
       APIHelper.getDetails(e.target.dataset.id).then((data) => {
         console.log(data);
       });
@@ -55,10 +53,10 @@ APIHelper.getAll().then((films) => {
   });
 });
 
-const btnComment = document.querySelectorAll("#comments");
+const btnComment = document.querySelectorAll('#comments');
 
 btnComment.forEach((btn) => {
-  btn.addEventListener("click", (e) => {
+  btn.addEventListener('click', (e) => {
     Comment.showModal(e);
   });
 });
