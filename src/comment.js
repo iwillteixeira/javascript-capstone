@@ -58,7 +58,8 @@ const Comment = (() => {
   };
 
   const countComment = (allComments) => {
-    allComments.firstElementChild.innerHTML = `Comments(${(allComments.children
+    allComments.firstElementChild.innerHTML = '';
+    allComments.firstElementChild.innerHTML += `Comments(${(allComments.children
       .length -
       1) /
       2})`;
