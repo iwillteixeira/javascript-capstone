@@ -36,6 +36,66 @@
     </nav>
   </header>
   <main class="min-vh-100 p-2 container">
+     <button type="button" id="comments">Comments</button>
+      <div class="modal d-none" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content border-5 rounded">
+            <div class="modal-header border-0">
+              <button
+                type="button"
+                id="close-modal"
+                class="btn-close btn-lg"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="text-center">
+                <img
+                  src="https://via.placeholder.com/700x400.png"
+                  class="img-fluid h-100"
+                  alt="..."
+                />
+              </div>
+              <h2 class="modal-title text-center">Show Name</h2>
+              <div class="show-info d-flex justify-content-around mt-4">
+                <div>
+                  <h5>Show: Genre</h5>
+                  <h5>Show: Language</h5>
+                </div>
+                <div>
+                  <h5>Show: Rating</h5>
+                  <h5>Show: Runtime</h5>
+                </div>
+              </div>
+              <div id="all-comments" class="mt-5 text-center">
+                <h3 class="mb-5">Comments(1)</h3>
+                <p>03/12/2021 Alex: Love it!</p>
+              </div>
+            </div>
+            <div class="modal-footer d-block">
+              <h3 class="mb-5 text-center">Add a comment</h3>
+              <form class="w-25 m-auto">
+                <div class="mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Your name"
+                  />
+                </div>
+                <div class="mb-3">
+                  <div class="input-group">
+                    <textarea
+                      class="form-control"
+                      aria-label="With textarea"
+                      placeholder="Your insights"
+                    ></textarea>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-secondary">Comment</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     <div class="d-flex flex-wrap gap-4 py-4 justify-content-center films">
 
     </div>

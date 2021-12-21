@@ -1,6 +1,7 @@
 import './scss/style.scss';
 
 import APIHelper from './js/APIHelper';
+import Comment from './comment.js';
 
 const createCardForFilm = (film) => `
   <div class="card d-flex col-lg-3 col-md-5 col-10">
@@ -43,5 +44,12 @@ APIHelper.getAll().then((data) => {
         console.log(data);
       });
     });
+
+
+const btnComment = document.querySelectorAll('#comments');
+
+btnComment.forEach((btn) => {
+  btn.addEventListener('click', (e) => {
+    Comment.showModal(e);
   });
 });
