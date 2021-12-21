@@ -1,8 +1,8 @@
-import "./scss/style.scss";
+import './scss/style.scss';
 
-import APIHelper from "./js/APIHelper";
-import Comment from "./comment.js";
-import InvolvementAPIHelper from "./js/InvolvementAPIHelper";
+import APIHelper from './js/APIHelper';
+import Comment from './comment.js';
+import InvolvementAPIHelper from './js/InvolvementAPIHelper';
 
 const createCardForFilm = (film, numOfLikes) => `
   <div class="card d-flex col-lg-3 col-md-5 col-10">
@@ -23,22 +23,21 @@ const createCardForFilm = (film, numOfLikes) => `
   </div>`;
 
 const displayShows = async () => {
-  const showsDiv = document.querySelector(".films");
+  const showsDiv = document.querySelector('.films');
 
   const shows = await APIHelper.getAll();
 
-  showsDiv.innerHTML = "";
+  showsDiv.innerHTML = '';
   const likes = await InvolvementAPIHelper.getLikes();
 
   shows.forEach((show) => {
-    const numOfLikes =
-      likes.filter((like) => like.item_id === show.id)[0]?.likes || 0;
+    const numOfLikes = likes.filter((like) => like.item_id === show.id)[0]?.likes || 0;
     showsDiv.innerHTML += createCardForFilm(show, numOfLikes);
   });
 
-  const commentBtns = document.querySelectorAll(".comment");
+  const commentBtns = document.querySelectorAll('.comment');
   commentBtns.forEach((commentBtn) => {
-    commentBtn.addEventListener("click", (e) => {
+    commentBtn.addEventListener('click', (e) => {
       const showId = e.target.dataset.id;
       APIHelper.getDetails(showId).then((data) => {
         console.log(data);
@@ -46,33 +45,32 @@ const displayShows = async () => {
     });
   });
 
-  const reservationBtns = document.querySelectorAll(".reservation");
+  const reservationBtns = document.querySelectorAll('.reservation');
   reservationBtns.forEach((reservationBtn) => {
-    reservationBtn.addEventListener("click", (e) => {
+    reservationBtn.addEventListener('click', (e) => {
       APIHelper.getDetails(e.target.dataset.id).then((data) => {
         console.log(data);
       });
     });
   });
 
-  const likeBtns = document.querySelectorAll(".like-btn");
+  const likeBtns = document.querySelectorAll('.like-btn');
   likeBtns.forEach((likeBtn) => {
-    likeBtn.addEventListener("click", (e) => {
-      let showId = parseInt(e.target.dataset.id);
+    likeBtn.addEventListener('click', (e) => {
+      const showId = parseInt(e.target.dataset.id, 10);
       InvolvementAPIHelper.postLikes(showId);
-      let likeNumberDiv =
-        e.target.parentNode.parentNode.querySelector(".like-number");
-      likeNumberDiv.innerHTML = parseInt(likeNumberDiv.innerHTML) + 1;
+      const likeNumberDiv = e.target.parentNode.parentNode.querySelector('.like-number');
+      likeNumberDiv.innerHTML = parseInt(likeNumberDiv.innerHTML, 10) + 1;
     });
   });
 };
 
 displayShows();
 
-const btnComment = document.querySelectorAll("#comments");
+const btnComment = document.querySelectorAll('#comments');
 
 btnComment.forEach((btn) => {
-  btn.addEventListener("click", (e) => {
+  btn.addEventListener('click', (e) => {
     Comment.showModal(e);
   });
 });
