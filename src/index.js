@@ -2,8 +2,10 @@ import "./scss/style.scss";
 
 import APIHelper from "./js/APIHelper";
 import Comment from "./comment.js";
+import InvolvementAPIHelper from "./js/InvolvementAPIHelper";
 
-const createCardForFilm = (film) => `
+const createCardForFilm = (film, numOfLikes) =>
+  `
   <div class="card d-flex col-lg-3 col-md-5 col-10">
     <img src=${film.image.original} class="card-img-top w-100"
       alt="Show Image">
@@ -12,6 +14,7 @@ const createCardForFilm = (film) => `
         <h5 class="card-title mt-2 h6">${film.name}</h5>
         <i class="far fa-heart text-danger"></i>
       </div>
+      <div class="text-end">${numOfLikes}</div>
       <div class="d-flex flex-column gap-2 pt-2">
         <a class="btn btn-primary comment" data-id=${film.id}>Comments</a>
         <a class="btn btn-info reservation" data-id=${film.id}>Reservations</a>
@@ -21,10 +24,15 @@ const createCardForFilm = (film) => `
   </div>`;
 
 const filmsDiv = document.querySelector(".films");
-APIHelper.getAll().then((data) => {
+APIHelper.getAll().then((films) => {
   filmsDiv.innerHTML = " ";
-  data.forEach((film) => {
-    filmsDiv.innerHTML += createCardForFilm(film);
+  InvolvementAPIHelper.getLikes().then((likes) => {
+    films.forEach((film) => {
+      let numOfLikes =
+        likes.filter((like) => like.item_id === film.id)[0]?.likes || 0;
+      filmsDiv.innerHTML += createCardForFilm(film, numOfLikes);
+    });
+    // InvolvementAPIHelper.postLikes(film.id);
   });
 
   const commentBtns = document.querySelectorAll(".comment");
