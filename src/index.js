@@ -36,7 +36,8 @@ APIHelper.getAll().then((data) => {
         Comment.closeModal();
         Comment.showImage(data.image.original);
         Comment.showName(data.name);
-        console.log(showId, data);
+        Comment.showInfo(data);
+        console.log(data);
       });
     });
   });

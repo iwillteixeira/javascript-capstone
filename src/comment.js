@@ -25,6 +25,19 @@ const Comment = (() => {
     title.innerText = dataName;
   };
 
-  return { showModal, closeModal, showImage, showName };
+  const showInfo = (data) => {
+    const info = document.querySelector('.info');
+    info.innerHTML = '';
+    info.innerHTML += `<div>
+                        <h5>Genre: ${data.genres}</h5>
+                        <h5>Language: ${data.language}</h5>
+                     </div>
+                     <div>
+                       <h5>Rating: ${data.rating.average} / 10</h5>
+                       <h5>Duration: ${data.runtime} min</h5>
+                     </div>`;
+  };
+
+  return { showModal, closeModal, showImage, showName, showInfo };
 })();
 export default Comment;
