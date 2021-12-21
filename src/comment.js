@@ -9,11 +9,19 @@ const Comment = (() => {
     });
   };
 
-  const showModal = () => {
+  const showModal = (showID, data) => {
     modal.classList.remove('d-none');
     modal.classList.add('d-block');
     closeModal();
+    itemData(showID, data);
   };
+
+  const itemData = (showID, data) => {
+    const image = document.querySelector('canvas');
+    image.style.backgroundImage = `url(${data.image.original}`;
+    console.log();
+  };
+
   return { showModal, closeModal };
 })();
 export default Comment;
