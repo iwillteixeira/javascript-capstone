@@ -4,11 +4,12 @@ export default class InvolvementAPIHelper {
   static baseURL =
     'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';
 
-  static getLikes() {
+  static async getLikes() {
     try {
-      return fetch(
+      const likes = fetch(
         `${InvolvementAPIHelper.baseURL}apps/${InvolvementAPIHelper.AppId}/likes`,
       ).then((response) => response.json());
+      return likes;
     } catch (ex) {
       console.log(ex.message);
     }

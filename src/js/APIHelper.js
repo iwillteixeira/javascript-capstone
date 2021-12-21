@@ -1,18 +1,24 @@
 export default class APIHelper {
   static baseURL = 'https://api.tvmaze.com/shows';
 
-  static getAll(page = 1) {
+  static async getAll(page = 1) {
     try {
-      return fetch(`${APIHelper.baseURL}?page=${page}`).then((response) => response.json());
+      const shows = await fetch(`${APIHelper.baseURL}?page=${page}`).then(
+        (response) => response.json(),
+      );
+      return shows;
     } catch {
       console.log("Error: Couldn't fetch films data");
     }
     return [];
   }
 
-  static getDetails(showId) {
+  static async getDetails(showId) {
     try {
-      return fetch(`${APIHelper.baseURL}/${showId}`).then((response) => response.json());
+      const showDetails = await fetch(`${APIHelper.baseURL}/${showId}`).then(
+        (response) => response.json(),
+      );
+      return showDetails;
     } catch {
       console.log("Error: Couldn't fetch film details");
     }

@@ -22,15 +22,17 @@ const createCardForFilm = (film, numOfLikes) => `
     </div>
   </div>`;
 
-const filmsDiv = document.querySelector('.films');
-APIHelper.getAll().then((films) => {
-  filmsDiv.innerHTML = ' ';
-  InvolvementAPIHelper.getLikes().then((likes) => {
-    films.forEach((film) => {
-      const numOfLikes = likes.filter((like) => like.item_id === film.id)[0]?.likes || 0;
-      filmsDiv.innerHTML += createCardForFilm(film, numOfLikes);
-    });
-    // InvolvementAPIHelper.postLikes(film.id);
+const displayShows = async () => {
+  const showsDiv = document.querySelector('.films');
+
+  const shows = await APIHelper.getAll();
+
+  showsDiv.innerHTML = '';
+  const likes = await InvolvementAPIHelper.getLikes();
+
+  shows.forEach((show) => {
+    const numOfLikes = likes.filter((like) => like.item_id === show.id)[0]?.likes || 0;
+    showsDiv.innerHTML += createCardForFilm(show, numOfLikes);
   });
 
   const commentBtns = document.querySelectorAll('.comment');
@@ -51,7 +53,9 @@ APIHelper.getAll().then((films) => {
       });
     });
   });
-});
+};
+
+displayShows();
 
 const btnComment = document.querySelectorAll('#comments');
 
