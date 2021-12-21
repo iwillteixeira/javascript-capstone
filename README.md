@@ -42,12 +42,21 @@ Install the packages globally and after that:
 ## Authors
 
 👤 **George Magdy**
+ 
+- GitHub: [@githubhandle](https://github.com/gemmen29)
+- Twitter: [@twitterhandle](https://twitter.com/georgtriple1)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/george-magdy-840/)
+
 👤 **Will Teixeira**
-👤 **Yigit**
 
 - GitHub: [@githubhandle](https://github.com/iwillteixeira)
 - Twitter: [@twitterhandle](https://twitter.com/iwillteixeira)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/juscelino-t-39aa9049/)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/juscelinodev/)
+
+👤 **Yigit**
+
+- GitHub: [@githubhandle](https://github.com/yigitm)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/yigitmersin/)
 
 ## 🤝 Contributing
 

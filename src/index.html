@@ -37,6 +37,7 @@
     </nav>
   </header>
   <main class="min-vh-100 p-2 container">
+    
     <button type="button" id="comments">Comments</button>
     <div class="modal d-none" tabindex="-1">
       <div class="modal-dialog modal-xl">
@@ -84,36 +85,58 @@
     <div class="d-flex flex-wrap gap-4 py-4 justify-content-center films">
 
     </div>
-    <section class="modal-reservation d-flex flex-column justify-content-center align-items-center">
-      <div class="holder col-lg-8 d-flex flex-column align-items-center">
-        <div class="close align-self-end position-relative"><i class="fas fa-times fa-2x close-modal"></i></div>
-        <div class="image-reservation d-flex justify-content-center col-10 py-4"><img src="images/space1.jpg"
-            class="img-fluid" alt=""></div>
-        <h2 class="p-3">Space 3</h2>
-        <div class="description justify-content-center col-10 col-lg-3">
-          <ul class="row row-cols-2">
-            <li>Fuel: titanium</li>
-            <li>Length: 100,000</li>
-            <li>Weight: 400</li>
-            <li>Power: 100,000,000</li>
-          </ul>
+
+  <!-- Modal Reservation -->
+  <div class="modal fade" id="modalreservation" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close close-reservation" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="reservations">
-          <h3 class="p-3">Reservations (2)</h3>
-          <p>03/11/2021 - 03/12/2021 by Alex</p>
-          <p>03/11/2021 - 03/12/2021 by Alex</p>
+        <div class="modal-body">
+          <div class=" d-flex flex-column align-items-center">
+      
+            <div class="image-reservation d-flex justify-content-center  py-4"><img src="images/space1.jpg"
+                class="img-fluid" alt=""></div>
+            <h2 class="p-3 reservation-title">Space 3</h2>
+            <div class="description justify-content-center  d-flex">
+              <ul class="p-5">
+                <li class="name-movie">Fuel: titanium</li>
+                <li class="language">Length: 100,000</li>
+              </ul>
+              <ul class="p-5">
+                <li class="rating">Weight: 400</li>
+                <li class="type">Power: 100,000,000</li>
+              </ul>
+              
+            </div>
+            <h2 class="m-5"><strong>Summary:</strong></h2>
+            <p class="description-movie p-5"></p>
+            <div class="reservations">
+              <h3 class="p-3">Reservations (2)</h3>
+              <p>03/11/2021 - 03/12/2021 by Alex</p>
+              <p>03/11/2021 - 03/12/2021 by Alex</p>
+            </div>
+            <form class="d-flex flex-column aligm-items-start">
+              <h3 class="text-center">Add a reservation</h3>
+              <input placeholder="Your name" type="text" name="your_name" id="your_name" required>
+              <input type="date" name="start" id="start" required>
+              <input type="date" name="end" id="end" required>
+              <button type="button">Reserve</button>
+            </form>
+          </div>
         </div>
-        <form class="d-flex flex-column aligm-items-start col-10 col-lg-3">
-          <h3 class="text-center">Add a reservation</h3>
-          <input placeholder="Your name" type="text" name="your_name" id="your_name" required>
-          <input type="date" name="start" id="start" required>
-          <input type="date" name="end" id="end" required>
-          <button type="button">Reserve</button>
-        </form>
       </div>
-    </section>
+    </div>
+  </div>
+ 
+   
+    
+   
+    
 
   </main>
+  
   <footer class="text-center bg-dark text-light py-2">
     <p>2021 &copy; All copyrights reserved.</p>
   </footer>
