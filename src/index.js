@@ -37,7 +37,11 @@ APIHelper.getAll().then((data) => {
         Comment.showImage(data.image.original);
         Comment.showName(data.name);
         Comment.showInfo(data);
-        console.log(data);
+        const form = document.querySelector('form');
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          Comment.addComment(form);
+        });
       });
     });
   });
@@ -45,9 +49,7 @@ APIHelper.getAll().then((data) => {
   const reservationBtns = document.querySelectorAll('.reservation');
   reservationBtns.forEach((reservationBtn) => {
     reservationBtn.addEventListener('click', (e) => {
-      APIHelper.getDetails(e.target.dataset.id).then((data) => {
-        console.log(data);
-      });
+      APIHelper.getDetails(e.target.dataset.id).then((data) => {});
     });
   });
 });

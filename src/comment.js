@@ -38,6 +38,31 @@ const Comment = (() => {
                      </div>`;
   };
 
-  return { showModal, closeModal, showImage, showName, showInfo };
+  const addComment = (form) => {
+    const allComments = document.getElementById('all-comments');
+    allComments.innerHTML += `<p>${commentDate()} ${
+      form.firstElementChild.children[0].value
+    }: ${form.children[1].children[0].children[0].value}</p></br>`;
+    countComment(allComments);
+  };
+
+  const commentDate = () => {
+    const today = new Date();
+    const [dd, mm, yyyy] = [
+      today.getDate(),
+      today.getMonth(),
+      today.getFullYear(),
+    ];
+    const commentDate = `${dd}/${mm}/${yyyy}`;
+    return commentDate;
+  };
+
+  const countComment = (allComments) => {
+    allComments.firstElementChild.innerHTML = `Comments(${(allComments.children
+      .length -
+      1) /
+      2})`;
+  };
+  return { showModal, closeModal, showImage, showName, showInfo, addComment };
 })();
 export default Comment;
