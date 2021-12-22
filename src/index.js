@@ -97,7 +97,7 @@ document.querySelectorAll('.nav-link').forEach((link) => {
     document.querySelectorAll('.nav-link').forEach((l) => {
       l.classList.remove('active');
     });
-    displayShows(e.target.textContent);
+    displayShows(e.target.textContent.split(' ').join('-'));
     e.target.classList.add('active');
   });
 });
