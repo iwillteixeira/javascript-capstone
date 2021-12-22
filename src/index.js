@@ -1,8 +1,8 @@
 import './scss/style.scss';
 
-import APIHelper from './js/APIHelper';
+import APIHelper from './js/APIHelper.js';
 import Comment from './comment.js';
-import InvolvementAPIHelper from './js/InvolvementAPIHelper';
+import InvolvementAPIHelper from './js/InvolvementAPIHelper.js';
 import Reservation from './js/reservation.js';
 
 const createCardForFilm = (film, numOfLikes) => `
@@ -41,9 +41,19 @@ const displayShows = async () => {
     commentBtn.addEventListener('click', (e) => {
       const showId = e.target.dataset.id;
       APIHelper.getDetails(showId).then((data) => {
-        console.log(data);
+        Comment.showModal();
+        Comment.closeModal();
+        Comment.showImage(data.image.original);
+        Comment.showName(data.name);
+        Comment.showInfo(data);
       });
     });
+  });
+
+  const form = document.querySelector('form');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    Comment.addComment();
   });
 
   const reservationBtns = document.querySelectorAll('.reservation');
@@ -57,11 +67,3 @@ const displayShows = async () => {
 };
 
 displayShows();
-
-const btnComment = document.querySelectorAll('#comments');
-
-btnComment.forEach((btn) => {
-  btn.addEventListener('click', (e) => {
-    Comment.showModal(e);
-  });
-});
