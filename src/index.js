@@ -42,19 +42,21 @@ const displayShows = async () => {
     commentBtn.addEventListener('click', (e) => {
       const showId = e.target.dataset.id;
       APIHelper.getDetails(showId).then((data) => {
-        Comment.showModal();
+        Comment.showModal(showId);
         Comment.closeModal();
         Comment.showImage(data.image.original);
         Comment.showName(data.name);
         Comment.showInfo(data);
+        Comment.showComments(InvolvementAPIHelper.getComments(showId));
       });
     });
   });
 
   const form = document.querySelector('form');
   form.addEventListener('submit', (e) => {
+    const modalId = form.parentNode.parentNode.parentNode.parentNode.id;
     e.preventDefault();
-    Comment.addComment();
+    InvolvementAPIHelper.postComments(modalId, Comment.addComment());
   });
 
   const reservationBtns = document.querySelectorAll('.reservation');

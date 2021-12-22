@@ -56,11 +56,15 @@
               ></button>
             </div>
             <div class="modal-body">
-              <img src="image" class="w-75 h-25 m-auto" alt="image" />
+              <img
+                src="https://via.placeholder.com/700x400.png"
+                class="w-75 h-25 m-auto"
+                alt="image"
+              />
               <h2 class="modal-title text-center">Show Name</h2>
               <div class="info d-flex justify-content-around mt-4"></div>
               <div id="all-comments" class="mt-5 text-center">
-                <h3 class="mb-5">Show Name</h3>
+                <h3 class="mb-5">Loading...</h3>
                 <ul></ul>
               </div>
             </div>
@@ -89,52 +93,68 @@
           </div>
         </div>
       </div>
-
-    
-    <div class="d-flex flex-wrap gap-4 py-4 justify-content-center films">
-
-    </div>
-
-  <!-- Modal Reservation -->
-  <div class="modal fade" id="modalreservation" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="btn-close close-reservation" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class=" d-flex flex-column align-items-center">
-      
-            <div class="image-reservation d-flex justify-content-center  py-4"></div>
-            <h2 class="p-3 reservation-title">value</h2>
-            <div class="description justify-content-center  d-flex">
-              <ul class="p-5">
-                <li class="name-movie"></li>
-                <li class="language"></li>
-              </ul>
-              <ul class="p-5">
-                <li class="rating"></li>
-                <li class="type"></li>
-              </ul>
-              
+      <div
+        class="d-flex flex-wrap gap-4 py-4 justify-content-center films"
+      ></div>
+      <!-- Modal Reservation -->
+      <div
+        class="modal fade"
+        id="modalreservation"
+        tabindex="-1"
+        role="dialog"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button
+                type="button"
+                class="btn-close close-reservation"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
             </div>
-            <h2 class="m-5"><strong>Summary:</strong></h2>
-            <p class="description-movie p-5"></p>
-            <h3 class="p-3 reservation-count">Reservations (2)</h3>
-            <div class="reservations">
-              
-             
+            <div class="modal-body">
+              <div class=" d-flex flex-column align-items-center">
+                <div
+                  class="image-reservation d-flex justify-content-center  py-4"
+                ></div>
+                <h2 class="p-3 reservation-title">value</h2>
+                <div class="description justify-content-center  d-flex">
+                  <ul class="p-5">
+                    <li class="name-movie"></li>
+                    <li class="language"></li>
+                  </ul>
+                  <ul class="p-5">
+                    <li class="rating"></li>
+                    <li class="type"></li>
+                  </ul>
+                </div>
+                <h2 class="m-5"><strong>Summary:</strong></h2>
+                <p class="description-movie p-5"></p>
+                <h3 class="p-3 reservation-count">Reservations (2)</h3>
+                <div class="reservations">
+                  
+                </div>
+                <form class="d-flex flex-column aligm-items-start">
+                  <h3 class="text-center">Add a reservation</h3>
+                  <input
+                    placeholder="Your name"
+                    type="text"
+                    name="your_name"
+                    id="your_name"
+                    required
+                  />
+                  <label for="start">Start Data</label>
+                  <input type="date" name="start" id="start" required />
+                  <label for="end">End Data</label>
+                  <input type="date" name="end" id="end" required />
+                  <button class="reservation-button" type="button">
+                    Reserve
+                  </button>
+                </form>
+              </div>
             </div>
-            <form class="d-flex flex-column aligm-items-start">
-              <h3 class="text-center">Add a reservation</h3>
-              <input placeholder="Your name" type="text" name="your_name" id="your_name" required>
-              <label for="start">Start Data</label>
-              <input type="date" name="start" id="start" required>
-              <label for="end">End Data</label>
-              <input type="date" name="end" id="end" required>
-              <button class="reservation-button" type="button">Reserve</button>
-            </form>
-
           </div>
         </div>
       </div>
