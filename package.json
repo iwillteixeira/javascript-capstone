@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --env=jsdom",
     "build": "webpack && gh-pages -d dist",
     "start": "webpack serve --open",
     "predeploy": "npm run build",
