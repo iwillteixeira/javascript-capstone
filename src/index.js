@@ -1,9 +1,9 @@
-import './scss/style.scss';
+import "./scss/style.scss";
 
-import APIHelper from './js/APIHelper.js';
-import Comment from './comment.js';
-import InvolvementAPIHelper from './js/InvolvementAPIHelper.js';
-import Reservation from './js/reservation.js';
+import APIHelper from "./js/APIHelper.js";
+import Comment from "./comment.js";
+import InvolvementAPIHelper from "./js/InvolvementAPIHelper.js";
+import Reservation from "./js/reservation.js";
 
 const createCardForFilm = (film, numOfLikes) => `
   <div class="card d-flex col-lg-3 col-md-5 col-10">
@@ -23,22 +23,34 @@ const createCardForFilm = (film, numOfLikes) => `
     </div>
   </div>`;
 
+const countShows = () => {
+  return document.querySelectorAll(".card").length;
+};
+
 const displayShows = async () => {
-  const showsDiv = document.querySelector('.films');
+  document.querySelector(".numbers-text").classList.add("d-none");
+  document.querySelector(".loading").classList.remove("d-none");
+
+  const showsDiv = document.querySelector(".films");
 
   const shows = await APIHelper.getAll();
 
-  showsDiv.innerHTML = '';
+  showsDiv.innerHTML = "";
   const likes = await InvolvementAPIHelper.getLikes();
 
   shows.forEach((show) => {
-    const numOfLikes = likes.filter((like) => like.item_id === show.id)[0]?.likes || 0;
+    const numOfLikes =
+      likes.filter((like) => like.item_id === show.id)[0]?.likes || 0;
     showsDiv.innerHTML += createCardForFilm(show, numOfLikes);
   });
 
-  const commentBtns = document.querySelectorAll('.comment');
+  document.querySelector(".numbers").textContent = countShows();
+  document.querySelector(".numbers-text").classList.remove("d-none");
+  document.querySelector(".loading").classList.add("d-none");
+
+  const commentBtns = document.querySelectorAll(".comment");
   commentBtns.forEach((commentBtn) => {
-    commentBtn.addEventListener('click', (e) => {
+    commentBtn.addEventListener("click", (e) => {
       const showId = e.target.dataset.id;
       APIHelper.getDetails(showId).then((data) => {
         Comment.showModal();
@@ -50,27 +62,28 @@ const displayShows = async () => {
     });
   });
 
-  const form = document.querySelector('form');
-  form.addEventListener('submit', (e) => {
+  const form = document.querySelector("form");
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
     Comment.addComment();
   });
 
-  const reservationBtns = document.querySelectorAll('.reservation');
+  const reservationBtns = document.querySelectorAll(".reservation");
   reservationBtns.forEach((reservationBtn) => {
-    reservationBtn.addEventListener('click', (e) => {
+    reservationBtn.addEventListener("click", (e) => {
       APIHelper.getDetails(e.target.dataset.id).then((data) => {
         Reservation.modalShowInfo(data);
       });
     });
   });
 
-  const likeBtns = document.querySelectorAll('.like-btn');
+  const likeBtns = document.querySelectorAll(".like-btn");
   likeBtns.forEach((likeBtn) => {
-    likeBtn.addEventListener('click', (e) => {
+    likeBtn.addEventListener("click", (e) => {
       const showId = parseInt(e.target.dataset.id, 10);
       InvolvementAPIHelper.postLikes(showId);
-      const likeNumberDiv = e.target.parentNode.parentNode.querySelector('.like-number');
+      const likeNumberDiv =
+        e.target.parentNode.parentNode.querySelector(".like-number");
       likeNumberDiv.innerHTML = parseInt(likeNumberDiv.innerHTML, 10) + 1;
     });
   });
