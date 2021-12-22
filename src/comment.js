@@ -1,11 +1,28 @@
 const Comment = (() => {
   const modal = document.querySelector('.modal');
+  let allComments = document.getElementById('all-comments');
+  let form = document.querySelector('form');
+  let name = form.firstElementChild.firstElementChild;
+  let insight = form.children[1].children[0].children[0];
+  let ul = document.getElementById('all-comments').children[1];
+
+  const clearComment = () => {
+    for (let i = 0; i < allComments.childElementCount; i++) {
+      allComments.children[i].innerText = '';
+    }
+  };
+
+  const clearForm = () => {
+    name.value = '';
+    insight.value = '';
+  };
 
   const closeModal = () => {
     const closeModal = document.getElementById('close-modal');
     closeModal.addEventListener('click', () => {
       modal.classList.remove('d-block');
       modal.classList.add('d-none');
+      clearComment();
     });
   };
 
@@ -17,7 +34,6 @@ const Comment = (() => {
   const showImage = (dataImage) => {
     const image = document.querySelector('img');
     image.src = dataImage;
-    console.log();
   };
 
   const showName = (dataName) => {
@@ -38,12 +54,12 @@ const Comment = (() => {
                      </div>`;
   };
 
-  const addComment = (form) => {
-    const allComments = document.getElementById('all-comments');
-    allComments.innerHTML += `<p>${commentDate()} ${
-      form.firstElementChild.children[0].value
-    }: ${form.children[1].children[0].children[0].value}</p></br>`;
-    countComment(allComments);
+  const addComment = () => {
+    countComment();
+    let li = document.createElement('li');
+    ul.append(li);
+    li.innerText = `${commentDate()} ${name.value}: ${insight.value}`;
+    clearForm();
   };
 
   const commentDate = () => {
@@ -57,13 +73,17 @@ const Comment = (() => {
     return commentDate;
   };
 
-  const countComment = (allComments) => {
-    allComments.firstElementChild.innerHTML = '';
-    allComments.firstElementChild.innerHTML += `Comments(${(allComments.children
-      .length -
-      1) /
-      2})`;
+  const countComment = () => {
+    const total = allComments.lastElementChild.childElementCount + 1;
+    allComments.firstElementChild.innerText = `Comments(${total})`;
   };
-  return { showModal, closeModal, showImage, showName, showInfo, addComment };
+  return {
+    showModal,
+    closeModal,
+    showImage,
+    showName,
+    showInfo,
+    addComment,
+  };
 })();
 export default Comment;

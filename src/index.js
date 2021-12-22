@@ -37,13 +37,14 @@ APIHelper.getAll().then((data) => {
         Comment.showImage(data.image.original);
         Comment.showName(data.name);
         Comment.showInfo(data);
-        const form = document.querySelector('form');
-        form.addEventListener('submit', (e) => {
-          e.preventDefault();
-          Comment.addComment(form);
-        });
       });
     });
+  });
+
+  const form = document.querySelector('form');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    Comment.addComment();
   });
 
   const reservationBtns = document.querySelectorAll('.reservation');
