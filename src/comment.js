@@ -72,6 +72,9 @@ const Comment = (() => {
   };
 
   const addComment = () => {
+    if (ul.firstChild.innerText === 'No comments yet.') {
+      clearComment();
+    }
     countComment();
     const li = document.createElement('li');
     ul.append(li);
