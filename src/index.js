@@ -11,10 +11,10 @@ const createCardForFilm = (film, numOfLikes) => `
       alt="Show Image">
     <div class="card-body d-flex flex-column justify-content-between">
       <div class="d-flex justify-content-between align-items-center">
-        <h5 class="card-title mt-2 h6">${film.name}</h5>
+        <h5 class="card-title mt-2 fw-bold fs-6">${film.name}</h5>
         <i class="far fa-heart text-danger like-btn" data-id=${film.id}></i>
       </div>
-      <div class="text-end like-number">${numOfLikes}</div>
+      <div class="text-end fw-bold fs-6">Likes: <span class="like-number">${numOfLikes}</span></div>
       <div class="d-flex flex-column gap-2 pt-2">
         <a class="btn btn-primary comment" data-id=${film.id}>Comments</a>
         <a class="btn btn-info reservation" data-id=${film.id}>Reservations</a>
