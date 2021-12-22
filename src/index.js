@@ -27,13 +27,17 @@ const countShows = () => {
   return document.querySelectorAll(".card").length;
 };
 
-const displayShows = async () => {
+const displayShows = async (genre) => {
   document.querySelector(".numbers-text").classList.add("d-none");
   document.querySelector(".loading").classList.remove("d-none");
 
   const showsDiv = document.querySelector(".films");
 
   const shows = await APIHelper.getAll();
+
+  if (genre) {
+    shows = shows.filter((show) => show.genres.includes(genre));
+  }
 
   showsDiv.innerHTML = "";
   const likes = await InvolvementAPIHelper.getLikes();
@@ -90,3 +94,21 @@ const displayShows = async () => {
 };
 
 displayShows();
+
+// filter results based on show type
+document.querySelectorAll(".nav-link").forEach((link) => {
+  link.addEventListener("click", (e) => {
+    document.querySelectorAll(".nav-link").forEach((l) => {
+      l.classList.remove("active");
+    });
+    displayShows(e.target.textContent);
+    e.target.classList.add("active");
+  });
+});
+
+document.querySelector(".navbar-brand").addEventListener("click", () => {
+  document.querySelectorAll(".nav-link").forEach((l) => {
+    l.classList.remove("active");
+  });
+  displayShows();
+});
