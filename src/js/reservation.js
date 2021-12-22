@@ -8,6 +8,7 @@ const description = document.querySelector('.description-movie');
 const modalReservation = document.querySelector('#modalreservation');
 const closeButton = document.querySelector('.close-reservation');
 const reservationsSelector = document.querySelector('.reservations');
+const reservationTitle = document.querySelector('.reservation-title');
 
 export default class Reservation {
     static showModal = () => {
@@ -17,9 +18,16 @@ export default class Reservation {
       });
     }
 
+    static countReservation = () => {
+      const count = [...document.querySelector('.reservations').children];
+      reservationTitle.innerHTML = `Reservations (${count.length})`;
+      return count.length;
+    }
+
     static addReservation = (username, dateStart, dateEnd) => {
       reservationsSelector.insertAdjacentHTML('beforeend',
         `<p>${dateStart} - ${dateEnd} by ${username}</p>`);
+      Reservation.countReservation();
     }
 
     static showReservations = (e) => {
@@ -31,6 +39,7 @@ export default class Reservation {
         reservationsSelector.insertAdjacentHTML('beforeend',
           `<p>${element.date_start} - ${element.date_end} by ${element.username}</p>`);
       });
+      Reservation.countReservation();
     }
 
     static modalShowInfo = async (data, e, idr) => {
