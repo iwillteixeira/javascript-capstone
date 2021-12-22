@@ -33,9 +33,9 @@ const displayShows = async () => {
   const likes = await InvolvementAPIHelper.getLikes();
 
   shows.forEach((show) => {
-    const numOfLikes =
-      likes.filter((like) => like.item_id === show.id)[0]?.likes || 0;
-    showsDiv.innerHTML += createCardForFilm(show, numOfLikes);
+    const numOfLikes = likes.filter((like) => like.item_id === show.id)[0]
+      ? likes || 0
+      : (showsDiv.innerHTML += createCardForFilm(show, numOfLikes));
   });
 
   const commentBtns = document.querySelectorAll('.comment');
