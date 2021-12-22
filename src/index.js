@@ -12,9 +12,9 @@ const createCardForFilm = (film, numOfLikes) => `
     <div class="card-body d-flex flex-column justify-content-between">
       <div class="d-flex justify-content-between align-items-center">
         <h5 class="card-title mt-2 h6">${film.name}</h5>
-        <i class="far fa-heart text-danger"></i>
+        <i class="far fa-heart text-danger like-btn" data-id=${film.id}></i>
       </div>
-      <div class="text-end">${numOfLikes}</div>
+      <div class="text-end like-number">${numOfLikes}</div>
       <div class="d-flex flex-column gap-2 pt-2">
         <a class="btn btn-primary comment" data-id=${film.id}>Comments</a>
         <a class="btn btn-info reservation" data-id=${film.id}>Reservations</a>
@@ -62,6 +62,16 @@ const displayShows = async () => {
       APIHelper.getDetails(e.target.dataset.id).then((data) => {
         Reservation.modalShowInfo(data);
       });
+    });
+  });
+
+  const likeBtns = document.querySelectorAll('.like-btn');
+  likeBtns.forEach((likeBtn) => {
+    likeBtn.addEventListener('click', (e) => {
+      const showId = parseInt(e.target.dataset.id, 10);
+      InvolvementAPIHelper.postLikes(showId);
+      const likeNumberDiv = e.target.parentNode.parentNode.querySelector('.like-number');
+      likeNumberDiv.innerHTML = parseInt(likeNumberDiv.innerHTML, 10) + 1;
     });
   });
 };
