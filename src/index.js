@@ -33,7 +33,7 @@ const displayShows = async (genre) => {
 
   const showsDiv = document.querySelector(".films");
 
-  const shows = await APIHelper.getAll();
+  let shows = await APIHelper.getAll();
 
   if (genre) {
     shows = shows.filter((show) => show.genres.includes(genre));
