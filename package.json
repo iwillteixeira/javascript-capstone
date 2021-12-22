@@ -9,7 +9,8 @@
     "start": "webpack serve --open",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
-    "fixlinters": "npx stylelint '**/*.{css,scss}' --fix && npx eslint . --fix && npx hint ."
+    "fixlinters": "npx stylelint '**/*.{css,scss}' --fix && npx eslint . --fix && npx hint .",
+    "watch": "webpack --watch"
   },
   "repository": {
     "type": "git",
