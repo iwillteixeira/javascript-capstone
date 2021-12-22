@@ -26,9 +26,10 @@ const Comment = (() => {
     });
   };
 
-  const showModal = () => {
+  const showModal = (showId) => {
     modal.classList.remove('d-none');
     modal.classList.add('d-block');
+    modal.setAttribute('id', showId);
   };
 
   const showImage = (dataImage) => {
@@ -75,8 +76,27 @@ const Comment = (() => {
     const li = document.createElement('li');
     ul.append(li);
     li.innerText = `${commentDate()} ${name.value}: ${insight.value}`;
+    const values = [name.value, insight.value];
     clearForm();
+    return values;
   };
+
+  const showComments = async (response) => {
+    const comments = await response;
+    if (comments.error) {
+      const li = document.createElement('li');
+      ul.append(li);
+      li.innerText = `${comments.error.message}`;
+    } else {
+      comments.forEach((item) => {
+        countComment();
+        const li = document.createElement('li');
+        ul.append(li);
+        li.innerText = `${commentDate()} ${item.username}: ${item.comment}`;
+      });
+    }
+  };
+
   return {
     showModal,
     closeModal,
@@ -84,6 +104,7 @@ const Comment = (() => {
     showName,
     showInfo,
     addComment,
+    showComments,
   };
 })();
 export default Comment;
