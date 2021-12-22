@@ -1,6 +1,6 @@
 import './scss/style.scss';
 
-import APIHelper from './js/APIHelper';
+import APIHelper from './js/APIHelper.js';
 import Comment from './comment.js';
 
 const createCardForFilm = (film) => `
@@ -50,7 +50,7 @@ APIHelper.getAll().then((data) => {
   const reservationBtns = document.querySelectorAll('.reservation');
   reservationBtns.forEach((reservationBtn) => {
     reservationBtn.addEventListener('click', (e) => {
-      APIHelper.getDetails(e.target.dataset.id).then((data) => {});
+      APIHelper.getDetails(e.target.dataset.id).then(() => {});
     });
   });
 });

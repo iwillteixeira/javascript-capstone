@@ -1,13 +1,13 @@
 const Comment = (() => {
   const modal = document.querySelector('.modal');
-  let allComments = document.getElementById('all-comments');
-  let form = document.querySelector('form');
-  let name = form.firstElementChild.firstElementChild;
-  let insight = form.children[1].children[0].children[0];
-  let ul = document.getElementById('all-comments').children[1];
+  const allComments = document.getElementById('all-comments');
+  const form = document.querySelector('form');
+  const name = form.firstElementChild.firstElementChild;
+  const insight = form.children[1].children[0].children[0];
+  const ul = document.getElementById('all-comments').children[1];
 
   const clearComment = () => {
-    for (let i = 0; i < allComments.childElementCount; i++) {
+    for (let i = 0; i < allComments.childElementCount; i += 1) {
       allComments.children[i].innerText = '';
     }
   };
@@ -54,14 +54,6 @@ const Comment = (() => {
                      </div>`;
   };
 
-  const addComment = () => {
-    countComment();
-    let li = document.createElement('li');
-    ul.append(li);
-    li.innerText = `${commentDate()} ${name.value}: ${insight.value}`;
-    clearForm();
-  };
-
   const commentDate = () => {
     const today = new Date();
     const [dd, mm, yyyy] = [
@@ -76,6 +68,14 @@ const Comment = (() => {
   const countComment = () => {
     const total = allComments.lastElementChild.childElementCount + 1;
     allComments.firstElementChild.innerText = `Comments(${total})`;
+  };
+
+  const addComment = () => {
+    countComment();
+    const li = document.createElement('li');
+    ul.append(li);
+    li.innerText = `${commentDate()} ${name.value}: ${insight.value}`;
+    clearForm();
   };
   return {
     showModal,
