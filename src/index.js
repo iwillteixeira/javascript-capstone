@@ -1,7 +1,7 @@
 import './scss/style.scss';
 
 import APIHelper from './js/APIHelper.js';
-import Comment from './comment.js';
+import Comment from './js/comment.js';
 import InvolvementAPIHelper from './js/InvolvementAPIHelper.js';
 import Reservation from './js/reservation.js';
 
@@ -33,7 +33,8 @@ const displayShows = async () => {
   const likes = await InvolvementAPIHelper.getLikes();
 
   shows.forEach((show) => {
-    const numOfLikes = likes.filter((like) => like.item_id === show.id)[0]?.likes || 0;
+    const numOfLikes =
+      likes.filter((like) => like.item_id === show.id)[0]?.likes || 0;
     showsDiv.innerHTML += createCardForFilm(show, numOfLikes);
   });
 
@@ -75,9 +76,22 @@ const displayShows = async () => {
         const endDate = document.querySelector('#end');
         const nameDate = document.querySelector('#your_name');
         const { id } = document.querySelector('#modalreservation img');
-        if (startDate.value !== '' && endDate.value !== '' && startDate.value !== '') {
-          InvolvementAPIHelper.postReservation(id, nameDate.value, startDate.value, endDate.value);
-          Reservation.addReservation(nameDate.value, startDate.value, endDate.value);
+        if (
+          startDate.value !== '' &&
+          endDate.value !== '' &&
+          startDate.value !== ''
+        ) {
+          InvolvementAPIHelper.postReservation(
+            id,
+            nameDate.value,
+            startDate.value,
+            endDate.value,
+          );
+          Reservation.addReservation(
+            nameDate.value,
+            startDate.value,
+            endDate.value,
+          );
           startDate.value = '';
           endDate.value = '';
           nameDate.value = '';
@@ -91,7 +105,9 @@ const displayShows = async () => {
     likeBtn.addEventListener('click', (e) => {
       const showId = parseInt(e.target.dataset.id, 10);
       InvolvementAPIHelper.postLikes(showId);
-      const likeNumberDiv = e.target.parentNode.parentNode.querySelector('.like-number');
+      const likeNumberDiv = e.target.parentNode.parentNode.querySelector(
+        '.like-number',
+      );
       likeNumberDiv.innerHTML = parseInt(likeNumberDiv.innerHTML, 10) + 1;
     });
   });
