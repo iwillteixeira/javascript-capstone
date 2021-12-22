@@ -94,6 +94,5 @@ export default class InvolvementAPIHelper {
     } catch (ex) {
       console.log(ex.message);
     }
-
   }
 }
