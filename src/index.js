@@ -28,6 +28,7 @@ const countShows = () => document.querySelectorAll('.card').length;
 const displayShows = async (genre) => {
   document.querySelector('.numbers-text').classList.add('d-none');
   document.querySelector('.loading').classList.remove('d-none');
+  document.querySelector('header').classList.add('d-none');
 
   const showsDiv = document.querySelector('.films');
 
@@ -40,53 +41,56 @@ const displayShows = async (genre) => {
   showsDiv.innerHTML = '';
   const likes = await InvolvementAPIHelper.getLikes();
 
-  shows.forEach((show) => {
-    const numOfLikes = likes.filter((like) => like.item_id === show.id)[0]?.likes || 0;
-    showsDiv.innerHTML += createCardForFilm(show, numOfLikes);
-  });
+  setTimeout(() => {
+    shows.forEach((show) => {
+      const numOfLikes = likes.filter((like) => like.item_id === show.id)[0]?.likes || 0;
+      showsDiv.innerHTML += createCardForFilm(show, numOfLikes);
+    });
 
-  document.querySelector('.numbers').textContent = countShows();
-  document.querySelector('.numbers-text').classList.remove('d-none');
-  document.querySelector('.loading').classList.add('d-none');
+    document.querySelector('.numbers').textContent = countShows();
+    document.querySelector('.numbers-text').classList.remove('d-none');
+    document.querySelector('.loading').classList.add('d-none');
+    document.querySelector('header').classList.remove('d-none');
 
-  const commentBtns = document.querySelectorAll('.comment');
-  commentBtns.forEach((commentBtn) => {
-    commentBtn.addEventListener('click', (e) => {
-      const showId = e.target.dataset.id;
-      APIHelper.getDetails(showId).then((data) => {
-        Comment.showModal();
-        Comment.closeModal();
-        Comment.showImage(data.image.original);
-        Comment.showName(data.name);
-        Comment.showInfo(data);
+    const commentBtns = document.querySelectorAll('.comment');
+    commentBtns.forEach((commentBtn) => {
+      commentBtn.addEventListener('click', (e) => {
+        const showId = e.target.dataset.id;
+        APIHelper.getDetails(showId).then((data) => {
+          Comment.showModal();
+          Comment.closeModal();
+          Comment.showImage(data.image.original);
+          Comment.showName(data.name);
+          Comment.showInfo(data);
+        });
       });
     });
-  });
 
-  const form = document.querySelector('form');
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    Comment.addComment();
-  });
+    const form = document.querySelector('form');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      Comment.addComment();
+    });
 
-  const reservationBtns = document.querySelectorAll('.reservation');
-  reservationBtns.forEach((reservationBtn) => {
-    reservationBtn.addEventListener('click', (e) => {
-      APIHelper.getDetails(e.target.dataset.id).then((data) => {
-        Reservation.modalShowInfo(data);
+    const reservationBtns = document.querySelectorAll('.reservation');
+    reservationBtns.forEach((reservationBtn) => {
+      reservationBtn.addEventListener('click', (e) => {
+        APIHelper.getDetails(e.target.dataset.id).then((data) => {
+          Reservation.modalShowInfo(data);
+        });
       });
     });
-  });
 
-  const likeBtns = document.querySelectorAll('.like-btn');
-  likeBtns.forEach((likeBtn) => {
-    likeBtn.addEventListener('click', (e) => {
-      const showId = parseInt(e.target.dataset.id, 10);
-      InvolvementAPIHelper.postLikes(showId);
-      const likeNumberDiv = e.target.parentNode.parentNode.querySelector('.like-number');
-      likeNumberDiv.innerHTML = parseInt(likeNumberDiv.innerHTML, 10) + 1;
+    const likeBtns = document.querySelectorAll('.like-btn');
+    likeBtns.forEach((likeBtn) => {
+      likeBtn.addEventListener('click', (e) => {
+        const showId = parseInt(e.target.dataset.id, 10);
+        InvolvementAPIHelper.postLikes(showId);
+        const likeNumberDiv = e.target.parentNode.parentNode.querySelector('.like-number');
+        likeNumberDiv.innerHTML = parseInt(likeNumberDiv.innerHTML, 10) + 1;
+      });
     });
-  });
+  }, 3000);
 };
 
 displayShows();
