@@ -3,9 +3,10 @@ export default class APIHelper {
 
   static async getAll(page = 1) {
     try {
-      this.data = await fetch(`${APIHelper.baseURL}?page=${page}`);
-      const allData = this.data.json();
-      return allData;
+      const shows = await fetch(`${APIHelper.baseURL}?page=${page}`).then(
+        (response) => response.json(),
+      );
+      return shows;
     } catch {
       console.log("Error: Couldn't fetch films data");
     }
@@ -14,9 +15,10 @@ export default class APIHelper {
 
   static async getDetails(showId) {
     try {
-      this.data = await fetch(`${APIHelper.baseURL}/${showId}`);
-      const allData = this.data.json();
-      return allData;
+      const showDetails = await fetch(`${APIHelper.baseURL}/${showId}`).then(
+        (response) => response.json(),
+      );
+      return showDetails;
     } catch {
       console.log("Error: Couldn't fetch film details");
     }
