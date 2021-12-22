@@ -13,6 +13,7 @@ const createCardForFilm = (film, numOfLikes) => `
       <div class="d-flex justify-content-between align-items-center">
         <h5 class="card-title mt-2 h6">${film.name}</h5>
         <i class="far fa-heart text-danger like-btn" data-id=${film.id}></i>
+
       </div>
       <div class="text-end like-number">${numOfLikes}</div>
       <div class="d-flex flex-column gap-2 pt-2">
@@ -59,8 +60,26 @@ const displayShows = async () => {
   const reservationBtns = document.querySelectorAll('.reservation');
   reservationBtns.forEach((reservationBtn) => {
     reservationBtn.addEventListener('click', (e) => {
-      APIHelper.getDetails(e.target.dataset.id).then((data) => {
-        Reservation.modalShowInfo(data);
+      const idR = e.target.dataset.id;
+      InvolvementAPIHelper.getReservations(idR).then((e) => {
+        APIHelper.getDetails(idR).then((data) => {
+          Reservation.modalShowInfo(data, e, idR);
+        });
+      });
+      const btnAdd = document.querySelector('.reservation-button');
+
+      btnAdd.addEventListener('click', () => {
+        const startDate = document.querySelector('#start');
+        const endDate = document.querySelector('#end');
+        const nameDate = document.querySelector('#your_name');
+        const { id } = document.querySelector('#modalreservation img');
+        if (startDate.value !== '' && endDate.value !== '' && startDate.value !== '') {
+          InvolvementAPIHelper.postReservation(id, nameDate.value, startDate.value, endDate.value);
+          Reservation.addReservation(nameDate.value, startDate.value, endDate.value);
+          startDate.value = '';
+          endDate.value = '';
+          nameDate.value = '';
+        }
       });
     });
   });

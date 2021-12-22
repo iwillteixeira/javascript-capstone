@@ -2,6 +2,7 @@
 
 # JAVASCRIPT CAPSTONE
 
+![screenshot](./screenshot.png)
 
 ## Built With
 
@@ -10,6 +11,12 @@
 - CSS
 - JS
 - Bootstrap 5
+
+
+### Live version
+
+- live: [Javascript-Capstone](https://iwillteixeira.github.io/javascript-capstone/)
+
 
 
 ## Getting Started
