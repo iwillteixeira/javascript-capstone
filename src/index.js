@@ -1,6 +1,6 @@
 import './scss/style.scss';
 
-import APIHelper from './js/APIHelper';
+import APIHelper from './js/APIHelper.js';
 import Comment from './comment.js';
 import InvolvementAPIHelper from './js/InvolvementAPIHelper.js';
 import Reservation from './js/reservation.js';
@@ -22,7 +22,6 @@ const createCardForFilm = (film, numOfLikes) => `
 
     </div>
   </div>`;
-
 
 const displayShows = async () => {
   const showsDiv = document.querySelector('.films');
@@ -68,5 +67,3 @@ const displayShows = async () => {
 };
 
 displayShows();
-
-
