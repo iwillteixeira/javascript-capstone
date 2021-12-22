@@ -86,7 +86,7 @@ const Comment = (() => {
     if (comments.error) {
       const li = document.createElement('li');
       ul.append(li);
-      li.innerText = `${comments.error.message}`;
+      li.innerText = 'No comments yet.';
     } else {
       comments.forEach((item) => {
         countComment();
