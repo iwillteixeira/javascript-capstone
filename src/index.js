@@ -43,8 +43,7 @@ const displayShows = async (genre) => {
 
   setTimeout(() => {
     shows.forEach((show) => {
-      const numOfLikes =
-        likes.filter((like) => like.item_id === show.id)[0]?.likes || 0;
+      const numOfLikes = likes.filter((like) => like.item_id === show.id)[0]?.likes || 0;
       showsDiv.innerHTML += createCardForFilm(show, numOfLikes);
     });
 
@@ -91,9 +90,9 @@ const displayShows = async (genre) => {
           const nameDate = document.querySelector('#your_name');
           const { id } = document.querySelector('#modalreservation img');
           if (
-            startDate.value !== '' &&
-            endDate.value !== '' &&
             startDate.value !== ''
+            && endDate.value !== ''
+            && startDate.value !== ''
           ) {
             InvolvementAPIHelper.postReservation(
               id,
