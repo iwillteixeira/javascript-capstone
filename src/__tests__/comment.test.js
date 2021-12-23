@@ -6,7 +6,7 @@ import countComment from '../__mocks__/comment.js';
 
 jest.mock('../js/comment.js');
 
-describe('test', () => {
+describe('counts the all comments', () => {
   document.body.innerHTML = `<div id="all-comments">
     <p class="h3 mb-5"></p>
     <ul id="comment-list">
@@ -17,7 +17,7 @@ describe('test', () => {
     </ul>
   </div>`;
 
-  it('test', () => {
+  it('counts li elements inside the mock document', () => {
     expect(countComment()).toBe('Comments(4)');
   });
 });
