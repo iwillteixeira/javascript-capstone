@@ -1,7 +1,7 @@
 import './scss/style.scss';
 
 import APIHelper from './js/APIHelper.js';
-import Comment from './comment.js';
+import Comment from './js/comment.js';
 import InvolvementAPIHelper from './js/InvolvementAPIHelper.js';
 import Reservation from './js/reservation.js';
 
@@ -117,7 +117,9 @@ const displayShows = async (genre) => {
       likeBtn.addEventListener('click', (e) => {
         const showId = parseInt(e.target.dataset.id, 10);
         InvolvementAPIHelper.postLikes(showId);
-        const likeNumberDiv = e.target.parentNode.parentNode.querySelector('.like-number');
+        const likeNumberDiv = e.target.parentNode.parentNode.querySelector(
+          '.like-number',
+        );
         likeNumberDiv.innerHTML = parseInt(likeNumberDiv.innerHTML, 10) + 1;
       });
     });

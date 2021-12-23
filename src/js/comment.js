@@ -72,7 +72,12 @@ const Comment = (() => {
   };
 
   const addComment = () => {
+    if (ul.firstChild.innerText === 'No comments yet.') {
+      clearComment();
+    }
+
     countComment();
+    allComments.firstElementChild.innerText = countComment();
     const li = document.createElement('li');
     ul.append(li);
     li.innerText = `${commentDate()} ${name.value}: ${insight.value}`;
@@ -94,6 +99,7 @@ const Comment = (() => {
         ul.append(li);
         li.innerText = `${commentDate()} ${item.username}: ${item.comment}`;
       });
+      allComments.firstElementChild.innerText = countComment();
     }
   };
 
