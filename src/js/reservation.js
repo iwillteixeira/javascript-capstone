@@ -8,7 +8,7 @@ const description = document.querySelector('.description-movie');
 const modalReservation = document.querySelector('#modalreservation');
 const closeButton = document.querySelector('.close-reservation');
 const reservationsSelector = document.querySelector('.reservations');
-const reservationCount = document.querySelector('.reservation-count');
+
 
 export default class Reservation {
     static showModal = () => {
@@ -19,6 +19,7 @@ export default class Reservation {
     }
 
     static countReservation = () => {
+      const reservationCount = document.querySelector('.reservation-count');
       const count = [...document.querySelector('.reservations').children];
       reservationCount.innerHTML = `Reservations (${count.length})`;
       return count.length;
