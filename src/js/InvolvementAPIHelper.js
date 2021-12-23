@@ -6,7 +6,7 @@ export default class InvolvementAPIHelper {
 
   static async getLikes() {
     try {
-      const likes = fetch(
+      const likes = await fetch(
         `${InvolvementAPIHelper.baseURL}apps/${InvolvementAPIHelper.AppId}/likes`,
       ).then((response) => response.json());
       return likes;
