@@ -9,7 +9,6 @@ const modalReservation = document.querySelector('#modalreservation');
 const closeButton = document.querySelector('.close-reservation');
 const reservationsSelector = document.querySelector('.reservations');
 
-
 export default class Reservation {
     static showModal = () => {
       modalReservation.classList.add('show', 'd-block');
