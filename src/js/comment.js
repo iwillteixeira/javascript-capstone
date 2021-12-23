@@ -67,15 +67,15 @@ const Comment = (() => {
   };
 
   const countComment = () => {
-    const total = allComments.lastElementChild.childElementCount + 1;
-    allComments.firstElementChild.innerText = `Comments(${total})`;
+    const total = document.getElementById('comment-list').childElementCount;
+    return `Comments(${total})`;
   };
 
   const addComment = () => {
     if (ul.firstChild.innerText === 'No comments yet.') {
       clearComment();
     }
-    countComment();
+    allComments.firstElementChild.innerText = countComment();
     const li = document.createElement('li');
     ul.append(li);
     li.innerText = `${commentDate()} ${name.value}: ${insight.value}`;
@@ -92,11 +92,11 @@ const Comment = (() => {
       li.innerText = 'No comments yet.';
     } else {
       comments.forEach((item) => {
-        countComment();
         const li = document.createElement('li');
         ul.append(li);
         li.innerText = `${commentDate()} ${item.username}: ${item.comment}`;
       });
+      allComments.firstElementChild.innerText = countComment();
     }
   };
 

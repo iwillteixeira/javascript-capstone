@@ -31,73 +31,74 @@ const displayShows = async () => {
 
   showsDiv.innerHTML = '';
   const likes = await InvolvementAPIHelper.getLikes();
-
-  shows.forEach((show) => {
-    const numOfLikes = likes.filter((like) => like.item_id === show.id)[0]
-      ? likes || 0
-      : (showsDiv.innerHTML += createCardForFilm(show, numOfLikes));
-  });
-
-  const commentBtns = document.querySelectorAll('.comment');
-  commentBtns.forEach((commentBtn) => {
-    commentBtn.addEventListener('click', (e) => {
-      const showId = e.target.dataset.id;
-      APIHelper.getDetails(showId).then((data) => {
-        Comment.showModal(showId);
-        Comment.closeModal();
-        Comment.showImage(data.image.original);
-        Comment.showName(data.name);
-        Comment.showInfo(data);
-        Comment.showComments(InvolvementAPIHelper.getComments(showId));
-      });
+  setTimeout(() => {
+    shows.forEach((show) => {
+      const numOfLikes =
+        likes.filter((like) => like.item_id === show.id)[0]?.likes || 0;
+      showsDiv.innerHTML += createCardForFilm(show, numOfLikes);
     });
-  });
 
-  const form = document.querySelector('form');
-  form.addEventListener('submit', (e) => {
-    const modalId = form.parentNode.parentNode.parentNode.parentNode.id;
-    e.preventDefault();
-    InvolvementAPIHelper.postComments(modalId, Comment.addComment());
-  });
-
-  const reservationBtns = document.querySelectorAll('.reservation');
-  reservationBtns.forEach((reservationBtn) => {
-    reservationBtn.addEventListener('click', (e) => {
-      const idR = e.target.dataset.id;
-      InvolvementAPIHelper.getReservations(idR).then((e) => {
-        APIHelper.getDetails(idR).then((data) => {
-          Reservation.modalShowInfo(data, e, idR);
+    const commentBtns = document.querySelectorAll('.comment');
+    commentBtns.forEach((commentBtn) => {
+      commentBtn.addEventListener('click', (e) => {
+        const showId = e.target.dataset.id;
+        APIHelper.getDetails(showId).then((data) => {
+          Comment.showModal(showId);
+          Comment.closeModal();
+          Comment.showImage(data.image.original);
+          Comment.showName(data.name);
+          Comment.showInfo(data);
+          Comment.showComments(InvolvementAPIHelper.getComments(showId));
         });
       });
-      const btnAdd = document.querySelector('.reservation-button');
-
-      btnAdd.addEventListener('click', () => {
-        const startDate = document.querySelector('#start');
-        const endDate = document.querySelector('#end');
-        const nameDate = document.querySelector('#your_name');
-        const { id } = document.querySelector('#modalreservation img');
-        if (
-          startDate.value !== '' &&
-          endDate.value !== '' &&
-          startDate.value !== ''
-        ) {
-          InvolvementAPIHelper.postReservation(
-            id,
-            nameDate.value,
-            startDate.value,
-            endDate.value,
-          );
-          Reservation.addReservation(
-            nameDate.value,
-            startDate.value,
-            endDate.value,
-          );
-          startDate.value = '';
-          endDate.value = '';
-          nameDate.value = '';
-        }
-      });
     });
+
+    const form = document.querySelector('form');
+    form.addEventListener('submit', (e) => {
+      const modalId = form.parentNode.parentNode.parentNode.parentNode.id;
+      e.preventDefault();
+      InvolvementAPIHelper.postComments(modalId, Comment.addComment());
+    });
+
+    const reservationBtns = document.querySelectorAll('.reservation');
+    reservationBtns.forEach((reservationBtn) => {
+      reservationBtn.addEventListener('click', (e) => {
+        const idR = e.target.dataset.id;
+        InvolvementAPIHelper.getReservations(idR).then((e) => {
+          APIHelper.getDetails(idR).then((data) => {
+            Reservation.modalShowInfo(data, e, idR);
+          });
+        });
+        const btnAdd = document.querySelector('.reservation-button');
+
+        btnAdd.addEventListener('click', () => {
+          const startDate = document.querySelector('#start');
+          const endDate = document.querySelector('#end');
+          const nameDate = document.querySelector('#your_name');
+          const { id } = document.querySelector('#modalreservation img');
+          if (
+            startDate.value !== '' &&
+            endDate.value !== '' &&
+            startDate.value !== ''
+          ) {
+            InvolvementAPIHelper.postReservation(
+              id,
+              nameDate.value,
+              startDate.value,
+              endDate.value,
+            );
+            Reservation.addReservation(
+              nameDate.value,
+              startDate.value,
+              endDate.value,
+            );
+            startDate.value = '';
+            endDate.value = '';
+            nameDate.value = '';
+          }
+        });
+      });
+    }, 3000);
   });
 
   const likeBtns = document.querySelectorAll('.like-btn');
