@@ -21,6 +21,9 @@ Additionally using two different API's (TvMaze Show API & Microverse Involvement
 
 - live: [Javascript-Capstone](https://iwillteixeira.github.io/javascript-capstone/)
 
+### Project Video
+- [Video](https://drive.google.com/file/d/1kI4FmRN8IYxeZeRoA2kIq3AKwvdvPBeB/view)
+
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
