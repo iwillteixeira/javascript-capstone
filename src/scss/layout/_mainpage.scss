@@ -1,0 +1,48 @@
+header {
+  nav {
+    .navbar-brand {
+      color: #e6d9d9 !important;
+    }
+
+    a {
+      cursor: pointer;
+    }
+  }
+}
+
+main {
+  .card {
+    box-shadow: rgba(0, 0, 0, 0.25) 0 14px 28px, rgba(0, 0, 0, 0.22) 0 10px 10px;
+
+    .card-img-top {
+      height: 270px;
+    }
+  }
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.backdrop {
+  backdrop-filter: blur(7px);
+}
+
+.overflow-hidden-body {
+  overflow-y: hidden;
+}

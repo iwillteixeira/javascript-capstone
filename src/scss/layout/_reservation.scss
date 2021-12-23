@@ -1,0 +1,20 @@
+input,
+button {
+  margin: 15px 0;
+}
+
+.close {
+  position: relative;
+  top: 55px;
+  right: 9px;
+}
+
+.modal-reservation {
+  background-color: black;
+  max-height: 100vh;
+  position: absolute;
+}
+
+.holder {
+  background-color: white;
+}

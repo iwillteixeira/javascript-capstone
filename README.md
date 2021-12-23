@@ -1,34 +1,52 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# WebPack Template
+# JAVASCRIPT CAPSTONE
 
+Main goal of this project was working as a team with gitflow and best practices.
 
+Additionally using two different API's (TvMaze Show API & Microverse Involvement API).
+
+![screenshot](./screenshot.png)
 
 ## Built With
 
+- API
 - WEBPACK
 - HTML
-- CSS
+- SASS
 - JS
 - Bootstrap 5
 
+### Live version
+
+- live: [Javascript-Capstone](https://iwillteixeira.github.io/javascript-capstone/)
+
+### Project Video
+
+- [Video](https://drive.google.com/file/d/1vfaXza4MnhGfN6-yz4UDQE0lQFhaHpOh/view)
 
 ## Getting Started
 
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and running follow these simple example steps:
 
+1- Click on the top right green code button.
+2- On the dropdown menu, choose download zip button.
+3- After download, extract the zip file and you have the project running on your machine.
+4- You can also clone the project using git clone command.
+5- After downloading or cloning the project use the command git i to install all Node packages.
 
 ### Prerequisites
 
 To contribute with this project you must instal the follow items:
 
--NODE
--NPM
--SASS
+- NODE
+- NPM
+- SASS
 
 ### Setup
 
 Dowload NPM and NODE
+
 ### Install
 
 Install the packages globally and after that:
@@ -37,16 +55,27 @@ Install the packages globally and after that:
 
 ### Run tests
 
-- `npm run fixlinters`  fix and look up for errors
+- `npm run fixlinters` fix and look up for errors
 - `npm run test` jest test
 
 ## Authors
+
+👤 **George Magdy**
+
+- GitHub: [@githubhandle](https://github.com/gemmen29)
+- Twitter: [@twitterhandle](https://twitter.com/georgtriple1)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/george-magdy-840/)
 
 👤 **Will Teixeira**
 
 - GitHub: [@githubhandle](https://github.com/iwillteixeira)
 - Twitter: [@twitterhandle](https://twitter.com/iwillteixeira)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/juscelino-t-39aa9049/)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/juscelinodev/)
+
+👤 **Yigit Mersin**
+
+- GitHub: [@githubhandle](https://github.com/yigitm)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/yigitmersin/)
 
 ## 🤝 Contributing
 
@@ -62,8 +91,8 @@ Give a ⭐️ if you like this project!
 
 - [Microverse](https://www.microverse.com)
 - [FreeCodeCamp](https://www.freecodecamp.com)
-- My Cat for stay calm and didn't walk above my keyboard
-- My Wife for her support
+- [TV Maze](https://www.tvmaze.com/api)
+- [Microverse Involvement API](https://www.notion.so/microverse/Involvement-API-869e60b5ad104603aa6db59e08150270)
 
 ## 📝 License
 

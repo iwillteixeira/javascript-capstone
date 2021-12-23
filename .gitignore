@@ -2,3 +2,4 @@
 node_modules/
 *.Identifier
 hint_report/
+dist/
