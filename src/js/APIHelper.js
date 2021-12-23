@@ -8,7 +8,7 @@ export default class APIHelper {
       );
       return shows;
     } catch {
-      console.log("Error: Couldn't fetch films data");
+      document.alert("Error: Couldn't fetch films data");
     }
     return [];
   }
@@ -20,7 +20,7 @@ export default class APIHelper {
       );
       return showDetails;
     } catch {
-      console.log("Error: Couldn't fetch film details");
+      document.alert("Error: Couldn't fetch film details");
     }
     return {};
   }

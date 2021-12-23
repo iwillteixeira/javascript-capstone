@@ -11,7 +11,7 @@ export default class InvolvementAPIHelper {
       ).then((response) => response.json());
       return likes;
     } catch (ex) {
-      console.log(ex.message);
+      document.alert(ex.message);
     }
     return [];
   }
@@ -31,7 +31,7 @@ export default class InvolvementAPIHelper {
         },
       );
     } catch (ex) {
-      console.log(ex.message);
+      document.alert(ex.message);
     }
   }
 
@@ -92,7 +92,7 @@ export default class InvolvementAPIHelper {
         },
       );
     } catch (ex) {
-      console.log(ex.message);
+      document.alert(ex.message);
     }
   }
 }
