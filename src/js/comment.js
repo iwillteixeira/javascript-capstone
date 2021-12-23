@@ -23,10 +23,12 @@ const Comment = (() => {
       modal.classList.remove('d-block');
       modal.classList.add('d-none');
       clearComment();
+      document.body.classList.remove('overflow-hidden-body');
     });
   };
 
   const showModal = (showId) => {
+    document.body.classList.add('overflow-hidden-body');
     modal.classList.remove('d-none');
     modal.classList.add('d-block');
     modal.setAttribute('id', showId);
@@ -67,8 +69,8 @@ const Comment = (() => {
   };
 
   const countComment = () => {
-    const total = allComments.lastElementChild.childElementCount + 1;
-    allComments.firstElementChild.innerText = `Comments(${total})`;
+    const total = allComments.lastElementChild.childElementCount;
+    return `Comments(${total})`;
   };
 
   const addComment = () => {
@@ -76,8 +78,6 @@ const Comment = (() => {
       clearComment();
     }
 
-    countComment();
-    allComments.firstElementChild.innerText = countComment();
     const li = document.createElement('li');
     ul.append(li);
     li.innerText = `${commentDate()} ${name.value}: ${insight.value}`;
@@ -94,7 +94,7 @@ const Comment = (() => {
       li.innerText = 'No comments yet.';
     } else {
       comments.forEach((item) => {
-        countComment();
+        allComments.firstElementChild.innerText = countComment();
         const li = document.createElement('li');
         ul.append(li);
         li.innerText = `${commentDate()} ${item.username}: ${item.comment}`;
@@ -111,6 +111,7 @@ const Comment = (() => {
     showInfo,
     addComment,
     showComments,
+    countComment,
   };
 })();
 export default Comment;

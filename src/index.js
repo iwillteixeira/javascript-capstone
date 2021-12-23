@@ -69,8 +69,11 @@ const displayShows = async (genre) => {
 
     const form = document.querySelector('form');
     form.addEventListener('submit', (e) => {
+      const modal = document.querySelector('.modal');
       e.preventDefault();
-      Comment.addComment();
+      InvolvementAPIHelper.postComments(modal.id, Comment.addComment());
+      const allComments = document.getElementById('all-comments');
+      allComments.firstElementChild.innerText = Comment.countComment();
     });
 
     const reservationBtns = document.querySelectorAll('.reservation');

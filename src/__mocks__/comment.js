@@ -1,5 +1,6 @@
 const countComment = () => {
-  const total = document.getElementById('comment-list').childElementCount;
+  const allComments = document.getElementById('all-comments');
+  const total = allComments.lastElementChild.childElementCount;
   return `Comments(${total})`;
 };
 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>webpack template</title>
+    <title>Shows</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -63,7 +63,7 @@
       <div class="text-center display-6 fw-bold d-none numbers-text">
         Numbers of shows: <span class="numbers">0</span>
       </div>
-      <div class="modal d-none" tabindex="-1">
+      <div class="modal backdrop d-none" tabindex="-1">
         <div class="modal-dialog modal-xl">
           <div class="modal-content border-5 rounded">
             <div class="modal-header border-0">
@@ -116,7 +116,7 @@
       ></div>
       <!-- Modal Reservation -->
       <div
-        class="modal fade"
+        class="modal fade backdrop"
         id="modalreservation"
         tabindex="-1"
         role="dialog"
@@ -137,7 +137,11 @@
                 <div
                   class="image-reservation d-flex justify-content-center  py-4"
                 >
-                  <img src="images/space1.jpg" class="img-fluid" alt="" />
+                  <img
+                    src="https://via.placeholder.com/700x400.png"
+                    class="img-fluid"
+                    alt=""
+                  />
                 </div>
 
                 <h2 class="p-3 reservation-title">Space 3</h2>

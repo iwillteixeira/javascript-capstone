@@ -2,27 +2,28 @@
 
 # JAVASCRIPT CAPSTONE
 
+Main goal of this project was working as a team with gitflow and best practices.
+
+Additionally using two different API's (TvMaze Show API & Microverse Involvement API).
+
 ![screenshot](./screenshot.png)
 
 ## Built With
 
+- API
 - WEBPACK
 - HTML
-- CSS
+- SASS
 - JS
 - Bootstrap 5
-
 
 ### Live version
 
 - live: [Javascript-Capstone](https://iwillteixeira.github.io/javascript-capstone/)
 
-
-
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
-
 
 ### Prerequisites
 
@@ -35,6 +36,7 @@ To contribute with this project you must instal the follow items:
 ### Setup
 
 Dowload NPM and NODE
+
 ### Install
 
 Install the packages globally and after that:
@@ -43,13 +45,13 @@ Install the packages globally and after that:
 
 ### Run tests
 
-- `npm run fixlinters`  fix and look up for errors
+- `npm run fixlinters` fix and look up for errors
 - `npm run test` jest test
 
 ## Authors
 
 👤 **George Magdy**
- 
+
 - GitHub: [@githubhandle](https://github.com/gemmen29)
 - Twitter: [@twitterhandle](https://twitter.com/georgtriple1)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/george-magdy-840/)
@@ -60,7 +62,7 @@ Install the packages globally and after that:
 - Twitter: [@twitterhandle](https://twitter.com/iwillteixeira)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/juscelinodev/)
 
-👤 **Yigit**
+👤 **Yigit Mersin**
 
 - GitHub: [@githubhandle](https://github.com/yigitm)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/yigitmersin/)
@@ -79,8 +81,8 @@ Give a ⭐️ if you like this project!
 
 - [Microverse](https://www.microverse.com)
 - [FreeCodeCamp](https://www.freecodecamp.com)
-- My Cat for stay calm and didn't walk above my keyboard
-- My Wife for her support
+- [TV Maze](https://www.tvmaze.com/api)
+- [Microverse Involvement API](https://www.notion.so/microverse/Involvement-API-869e60b5ad104603aa6db59e08150270)
 
 ## 📝 License
 

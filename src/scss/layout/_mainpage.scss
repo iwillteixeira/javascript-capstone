@@ -3,6 +3,10 @@ header {
     .navbar-brand {
       color: #e6d9d9 !important;
     }
+
+    a {
+      cursor: pointer;
+    }
   }
 }
 
@@ -33,4 +37,12 @@ main {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.backdrop {
+  backdrop-filter: blur(7px);
+}
+
+.overflow-hidden-body {
+  overflow-y: hidden;
 }
